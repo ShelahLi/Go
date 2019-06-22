@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
+	"math"
+	"math/cmplx"
 )
 
 var (
 	//函数外面也可以定义变量，但是函数外面定义变量不能用(:=)
-	//这些变量不是全局变量，只是包类变量
+	//这些变量不是全局变量，只是包类变量,在包类使用
 	aa = 3
 	ss = "kkk"
 	bb = true
@@ -42,6 +44,31 @@ func variableShorter() {
 	fmt.Println(a, b, c, s)
 }
 
+func euler() {
+	//复数c
+	c := 3 + 4i
+	//复数包：cmplx, Abs取模
+	fmt.Println(cmplx.Abs(c))
+	//1i
+	fmt.Print("欧拉公式: ")
+	//%.3f：只要小数点后三位
+	fmt.Printf("%.3f\n", cmplx.Exp(1i*math.Pi)+1)
+}
+
+func triangle() {
+
+	var a, b int = 3, 4
+	fmt.Println(calcTriangle(a, b))
+}
+
+func calcTriangle(a , b int) int {
+	var c int
+	//强制类型转换：float64(), int()
+	//Sqrt():需要float64类型
+	c = int(math.Sqrt(float64(a*a + b*b)))
+	return c
+}
+
 
 func main() {
 	fmt.Println("Hello world")
@@ -51,5 +78,7 @@ func main() {
 	variableShorter()
 	fmt.Println(aa, ss, bb)
 
+	euler()
+	triangle()
 	
 }
