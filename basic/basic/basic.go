@@ -69,6 +69,45 @@ func calcTriangle(a , b int) int {
 	return c
 }
 
+func consts() {
+	// go中常量类型定义 const(...)
+	// 常量名称不需要大写,go中大小写有特殊含义
+	const (
+		filename = "abc.txt"
+		a, b     = 3, 4
+	)
+	var c int
+	// 如果定义了c是int类型，就要强制转换
+	//由于定义a, b时没有规定类型，所以sqrt会把a, b当做float用
+	c = int(math.Sqrt(a*a + b*b))
+	fmt.Println(filename, c)
+}
+
+func enums() {
+	// 枚举类型的定义
+	//go中没有枚举类型，用const来代替，const变量后面必须要赋值
+	// iota：表示这组变量是自增值，所以没有赋值, 自增值从0开始
+	const (
+		cpp = iota
+		_
+		python
+		golang
+		javascript
+	)
+
+	const (
+		// b等于1左移10乘以iota位，2进制
+		b = 1 << (10 * iota)
+		kb
+		mb
+		gb
+		tb
+		pb
+	)
+
+	fmt.Println(cpp, javascript, python, golang)
+	fmt.Println(b, kb, mb, gb, tb, pb)
+}
 
 func main() {
 	fmt.Println("Hello world")
@@ -80,5 +119,6 @@ func main() {
 
 	euler()
 	triangle()
-	
+	consts()
+	enums()
 }
