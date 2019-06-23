@@ -63,7 +63,7 @@ func main() {
 
 	fmt.Println("printing a string:")
 	s := `abc"d"
-	kkkk
+    kkkk
 	123
 
 	p`

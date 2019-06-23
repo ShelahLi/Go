@@ -52,7 +52,7 @@ func main() {
 	s4 := append(s3, 11)
 	s5 := append(s4, 12)
 	fmt.Println("s3, s4, s5 =", s3, s4, s5)
-	// s4 and s5 no longer view arr.
+	// s4 和 s5 会重新分配一个新的底层数组
 	fmt.Println("arr =", arr)
 
 	// Uncomment to run sliceOps demo.
