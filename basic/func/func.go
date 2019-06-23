@@ -53,7 +53,13 @@ func sum(numbers ...int) int {
 	return s
 }
 
-
+//指针的用法：加*表示参数是地址：&
+func swap_by_point(a, b *int){
+	*a, *b = *b, *a
+}
+func swap(a, b int) (int, int) {
+	return b, a
+}
 
 func main() {
 	fmt.Println("Error handling")
@@ -71,5 +77,9 @@ func main() {
 
 	fmt.Println("1+2+...+5 =", sum(1, 2, 3, 4, 5))
 
-	
+	a, b := 3, 4
+	// a代表引用， &a代表其指向地址, *a代表该地址指向的内容
+	swap_by_point(&a, &b)
+	//a, b = swap(a, b)
+	fmt.Println("a, b after swap is:", a, b)
 }
