@@ -9,6 +9,9 @@ func (node *Node) Traverse() {
 	fmt.Println()
 }
 
+/**
+	闭包遍历树
+*/
 func (node *Node) TraverseFunc(f func(*Node)) {
 	if node == nil {
 		return
@@ -16,6 +19,7 @@ func (node *Node) TraverseFunc(f func(*Node)) {
 
 	node.Left.TraverseFunc(f)
 	f(node)
+	fmt.Printf("%d ",node.Value)
 	node.Right.TraverseFunc(f)
 }
 

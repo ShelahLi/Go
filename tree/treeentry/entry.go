@@ -6,8 +6,8 @@ import (
 )
 
 /**
-	通过组合扩充别人的类型
- */
+通过组合扩充别人的类型
+*/
 type myTreeNode struct {
 	node *tree.Node
 }

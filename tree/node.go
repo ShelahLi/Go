@@ -3,9 +3,9 @@ package tree
 import "fmt"
 
 /**
-	定义节点的结构体
-	*Node指针类型
- */
+定义节点的结构体
+*Node指针类型
+*/
 type Node struct {
 	Value       int
 	Left, Right *Node
@@ -18,7 +18,7 @@ func (node Node) Print() {
 }
 
 func (node *Node) SetValue(value int) {
-	if node == nil  {
+	if node == nil {
 		fmt.Println("Setting Value to nil node. Ignored.")
 		return
 	}
