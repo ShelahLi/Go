@@ -29,11 +29,25 @@ func tryDefer() {
 
 func writeFile(filename string) {
 	//创建文件
-	file, err := os.Create(filename)
-	if err != nil{
-		panic(err)
-	}
+	//file, err := os.Create(filename)
+	// Openfile实际上就是Create，可以查看Create源码，0666权限
+	file, err := os.OpenFile(filename,
+		os.O_EXCL|os.O_CREATE|os.O_WRONLY, 0666)
 
+	if err != nil {
+		/**
+			如果pathError等于err.(*os.PathError)，ok为true，否则为false
+		 */
+		if pathError, ok := err.(*os.PathError); !ok {
+			panic(err)
+		} else {
+			fmt.Printf("%s, %s, %s\n",
+				pathError.Op,
+				pathError.Path,
+				pathError.Err)
+		}
+		return
+	}
 	// 函数退出之前执行关闭操作
 	defer file.Close()
 
