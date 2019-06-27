@@ -33,7 +33,7 @@ func printFile(filename string) {
 }
 
 func printFileContents(reader io.Reader) {
-	//逐行读取文件
+	//逐行读取文件，NewScanner创建并返回一个从r读取数据的Scanner，默认的分割函数是ScanLines。
 	scanner := bufio.NewScanner(reader)
 
 	//相当于while，go里面没有while
@@ -62,11 +62,14 @@ func main() {
 	printFile("basic/branch/abc.txt")
 
 	fmt.Println("printing a string:")
+
+	//跨行字符串
 	s := `abc"d"
     kkkk
 	123
 
 	p`
+	// strings.NewReader(s): 将string转为一个可读的Reader
 	printFileContents(strings.NewReader(s))
 
 	// Uncomment to see it runs forever

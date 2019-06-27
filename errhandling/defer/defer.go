@@ -55,6 +55,7 @@ func writeFile(filename string) {
 	// 函数退出之前执行关闭操作
 	defer file.Close()
 
+	//NewWriter创建一个具有默认大小缓冲、写入file的*Writer。
 	writer := bufio.NewWriter(file)
 	// 在文件关闭之前，将buffer.io里的数据写入文件
 	defer writer.Flush()
@@ -62,7 +63,7 @@ func writeFile(filename string) {
 	//写入buffer.io
 	f := fib.Fibonacci()
 	for i := 0; i < 20; i++ {
-		fmt.Fprintln(writer, f())
+		fmt.Fprint(writer, f())
 	}
 }
 
