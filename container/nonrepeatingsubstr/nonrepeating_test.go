@@ -39,4 +39,31 @@ func TestSubstr(t *testing.T) {
 
 }
 
-
+/**
+	Benchmark:基准测试；(性能测试)
+ */
+func BenchmarkSubstr(b *testing.B) {
+	s := "黑化肥挥发发灰会花飞灰化肥挥发发黑会飞花"
+	for i := 0; i < 13; i++ {
+		s = s + s
+	}
+	// 打印日志
+	b.Logf("len(s) = %d", len(s))
+	ans := 8
+	/**
+		重置时间；剔除上方准备输入数据的时间；
+	 */
+	b.ResetTimer()
+	/**
+		具体做多少遍测试不用我们关心，次数为：b.N
+		输出：运行1000000次，每次执行多长时间:BenchmarkSubstr-4   	 1000000	      1291 ns/op
+	*/
+	for i := 0; i < b.N; i++ {
+		actual := lengthOfNonRepeatingSubStr(s)
+		if actual != ans {
+			b.Errorf("got %d for input %s; "+
+				"expected %d",
+				actual, s, ans)
+		}
+	}
+}

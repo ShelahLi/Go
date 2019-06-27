@@ -5,10 +5,15 @@ import (
 )
 
 /**
-寻找最长不含有重复字符的子串
+	寻找最长不含有重复字符的子串
 */
 func lengthOfNonRepeatingSubStr(s string) int {
 	lastOccurred := make(map[rune]int)
+	//lastOccurred := make([]int, 0xffff)
+	// 清理
+	//for i:= range lastOccurred{
+	//	lastOccurred[i]=0
+	//}
 	start := 0
 	maxLength := 0
 
