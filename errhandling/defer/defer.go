@@ -34,11 +34,15 @@ func writeFile(filename string) {
 	file, err := os.OpenFile(filename,
 		os.O_EXCL|os.O_CREATE|os.O_WRONLY, 0666)
 
+	//err = errors.New("this is customer error")
 	if err != nil {
 		/**
 			如果pathError等于err.(*os.PathError)，ok为true，否则为false
 		 */
 		if pathError, ok := err.(*os.PathError); !ok {
+			/**
+				panic会引起程序崩溃，因此panic一般用于严重错误
+			 */
 			panic(err)
 		} else {
 			fmt.Printf("%s, %s, %s\n",
