@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"math"
+	"time"
 )
 
 func Sqrt(value float64)(float64, error) {
@@ -16,7 +17,7 @@ func Sqrt(value float64)(float64, error) {
 
 func main() {
 
-
+	start := time.Now()
 	if result, err:= Sqrt(-1); err != nil {
 		fmt.Println(err)
 	}else {
@@ -28,6 +29,10 @@ func main() {
 	}else {
 		fmt.Println(result)
 	}
+	end := time.Now()
+
+	time := end.Sub(start)
+	fmt.Println(time)
 }
 
 
