@@ -10,10 +10,10 @@ import (
 type Retriever struct {
 	UserAgent string
 	// 时间段
-	TimeOut   time.Duration
+	TimeOut time.Duration
 }
 
-func (r *Retriever)String() string{
+func (r *Retriever) String() string {
 	return fmt.Sprintf(
 		"Retriever: {UserAgent=%s, TimeOut=%d}", r.UserAgent, r.TimeOut)
 }
@@ -34,5 +34,3 @@ func (r *Retriever) Get(url string) string {
 
 	return string(result)
 }
-
-
