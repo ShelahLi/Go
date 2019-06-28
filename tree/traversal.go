@@ -23,12 +23,17 @@ func (node *Node) TraverseFunc(f func(*Node)) {
 	node.Right.TraverseFunc(f)
 }
 
+/**
+	使用channel实现树的遍历
+ */
 func (node *Node) TraverseWithChannel() chan *Node {
 	out := make(chan *Node)
 	go func() {
-		node.TraverseFunc(func(node *Node) {
-			out <- node
-		})
+		node.TraverseFunc(
+			// 在闭包里面实现另一个函数:f(node)，将node传入chan中
+			func(node *Node) {
+				out <- node
+			})
 		close(out)
 	}()
 	return out
